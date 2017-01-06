@@ -1,0 +1,16 @@
+{
+    "name": "stephenafamo/agadyn-woo-twitter",
+    "description": "A wordpress plugin to connect to automatically tweet woocommerce products",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Stephen Afam-Osemene",
+            "email": "stephenafamo@gmail.com"
+        }
+    ],
+    "require": {
+        "abraham/twitteroauth": "^0.7.2",
+        "vlucas/phpdotenv": "^2.4"
+    }
+}
