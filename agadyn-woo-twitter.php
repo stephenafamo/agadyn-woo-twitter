@@ -56,6 +56,7 @@ register_deactivation_hook( __FILE__, 'deactivate_agadyn_woo_twitter' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-agadyn-woo-twitter.php';
+require plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
 /**
  * Begins execution of the plugin.

@@ -153,6 +153,49 @@ class Agadyn_Woo_Twitter {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		// Add menu item
+		if(is_multisite()) {
+			$this->loader->add_action( 'network_admin_menu', $plugin_admin, 'add_plugin_network_menu' );
+			$this->loader->add_action( 'admin_post_agadyn_woo_twitter_network_settings', $plugin_admin, 'site_options_update' );
+
+			// action to delete the id and access token when a sub-site is deleted
+			$this->loader->add_action( 'delete_blog', $plugin_admin, 'delete_twitter', 10, 1 );
+		}
+
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_menu' );
+		// Add Settings link to the plugin
+		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
+		$this->loader->add_filter( 'plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links' );
+		// Save/Update our plugin options
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'options_update');
+
+        //handle twitter authentication
+		$this->loader->add_action( 'admin_post_agadyn_woo_twitter_authorize', $plugin_admin, 'authorize_twitter', 10, 1 );
+		$this->loader->add_action( 'admin_post_agadyn_woo_twitter_delete', $plugin_admin, 'delete_twitter', 10, 1 );
+
+		//authenticate twitter notifier
+		$this->loader->add_action( 'admin_post_agadyn_woo_twitter_authorize_n', $plugin_admin, 'authorize_twitter_n', 10, 1 );
+		$this->loader->add_action( 'admin_post_agadyn_woo_twitter_delete_n', $plugin_admin, 'delete_twitter_n', 10, 1 );
+
+		//add tweet metabox
+		$this->loader->add_filter( 'add_meta_boxes', $plugin_admin, 'add_custom_meta_box' );
+		$this->loader->add_action( 'save_post', $plugin_admin, 'save_custom_meta_box', 10, 2);
+
+		//send new order notification
+		$this->loader->add_action( 'woocommerce_thankyou', $plugin_admin, 'send_new_order_tweet_dm', 10, 1);
+
+		//add weekly cron schedule
+		$this->loader->add_filter( 'cron_schedules', $plugin_admin, 'add_weekly_schedule', 10, 1);
+
+		//handle tweet scheduling
+		$this->loader->add_action( 'admin_post_agadyn_woo_twitter_schedule', $plugin_admin, 'twitter_schedule', 10, 1 );
+
+		//tweet
+		$this->loader->add_action( 'send_product_tweet', $plugin_admin, 'send_product_tweet', 10, 1 );
+
+		//handle front end redirects
+		$this->loader->add_action( 'admin_post_redirect', $plugin_admin, 'redirect', 10, 1 );
+		$this->loader->add_action( 'admin_post_no_priv_redirect', $plugin_admin, 'redirect', 10, 1 );
 
 	}
 
