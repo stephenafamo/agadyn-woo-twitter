@@ -198,7 +198,7 @@ class Agadyn_Woo_Twitter_Admin {
 
 	            	<div id="agadyn_tweet_template<?= $key ?>">
 		                <label for="agadyn_woo_tweets<?= $key ?>">Enter tweet</label>
-		                <input name="agadyn_woo_tweets[]" id="agadyn_woo_tweets<?= $key ?>" type="text" value="<?= $value ?>" > 
+		                <input name="agadyn_woo_tweets[]" id="agadyn_woo_tweets<?= $key ?>" type="text" value="<?= $value ?>" maxlength="113" > 
 		                <input type="button"  onclick="remove_tweet_template(<?= $key ?>)" class="button" value="remove" />
 		                <br/>
 	                </div>
@@ -323,7 +323,7 @@ class Agadyn_Woo_Twitter_Admin {
 			$url = $connection->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
 
 			$current_user_id = get_current_user_id();
-			
+
 			set_transient( $current_user_id."_request_token", $request_token, 3600 );
 
 	        wp_redirect($url);
