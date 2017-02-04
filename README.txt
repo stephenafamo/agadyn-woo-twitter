@@ -1,92 +1,64 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
+Contributors: stephenafamo
 Donate link: https://stephenafamo.com
-Tags: comments, spam
+Tags: woocommerce, twitter, ecommerce, social, social media
 Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+Tested up to: 4.7.2
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Automatically tweet about your WooCommerce Products and receive DM notifications when an order is placed.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+This plugin is used to automatically send out tweets about your products. 
+On the products edit screen, you will see a place to enter the tweets to be sent out for that product.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
 
-A few notes about the sections above:
+You would be required to create a Twitter App at https://apps.twitter.com.
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+Once you have created the twiiter app, you should save the consumer key and secret in the plugin settings page. settings -> Woo Twitter
+After authorizing the account, you should set the tweeting schedule.
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+**NOTE**
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+* The product to be tweeted and the tweet to use is randomly selected.
+* To receive sale notifications, you will need to set a separate twitter account as the "notifier"
+* You will also need to set the App's permission to "Read, Write and Access direct messages"
+
+**MULTISITE**
+
+The plugin behaves slightly differently on multisite installs.
+
+* The consumer key, secret and notifing account are set up once in the plugin's network settings which can be found under settings -> Woo Twitter in the network admin menu.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
 1. Upload `agadyn-woo-twitter.php` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= How many tweets can I send out a day? =
 
-An answer to that question.
+For now, the settings limit it to 3 times, future versions will change this.
 
-= What about foo bar? =
+= How do I create a twitter app? =
 
-Answer to foo bar dilemma.
+It's pretty easy to create a twitter app and get the consumer key and secret, you can read any of the following articles.
+https://smashballoon.com/custom-twitter-feeds/docs/create-twitter-app/
+https://blog.askupasoftware.com/how-to-create-a-twitter-application/
 
-== Screenshots ==
+= I am a developer. How can I help improve this plugin? =
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+It's on github!!! https://github.com/stephenafamo/agadyn-woo-twitter
+Send in a pull request anytime!
 
 == Changelog ==
 
 = 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
+* Initial release.
 
 == A brief Markdown Example ==
 
