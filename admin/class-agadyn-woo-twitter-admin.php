@@ -514,7 +514,7 @@ class Agadyn_Woo_Twitter_Admin {
 
 		if (is_multisite()){
 		    //Grab all options
-		    $site_id = (int) (get_site())->blog_id;
+		    $site_id = int(get_site($this->blog_id));
 		    $options = get_site_option($this->plugin_name);
 		    $access_token = get_site_option( 'agadyn-woo-twitter'.'-access_token-'.$site_id);
 
